@@ -6,6 +6,8 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private int level;
+
     [Header("Gameplay")]
     [SerializeField] private float timer, timerGoal;
     [SerializeField] private int redbullCanGoal;
@@ -17,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float scoreFinal;
     [SerializeField] private TMP_Text scoreFinalText, scoreTimerText, scoreCanText;
     [SerializeField] private GameObject ranking;
+    [SerializeField] private GameObject gameOver;
     [SerializeField] private TMP_InputField inputName;
 
     public UnityEvent<string, int> submitScoreEvent;
@@ -50,12 +53,22 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("perdeu");
-        SceneManager.LoadScene("Nivel1");
+        gameOver.SetActive(true);
     }
 
     public void Restart()
     {
+        SceneManager.LoadScene("Nivel" + level);
+    }
 
+    public void Menu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene("Nivel" + (level + 1));
     }
 
     public void GameWin()
@@ -63,7 +76,10 @@ public class GameManager : MonoBehaviour
         Debug.Log("ganhou");
         Time.timeScale = 0;
         scoreFinal = (redbullCan * 100) + ((timerGoal - timer) * 1000);
+        scoreCanText.text = redbullCan.ToString() + "" + redbullCanGoal.ToString();
+        scoreTimerText.text = timer.ToString("F2") + "/" + timerGoal.ToString();
         scoreFinalText.text = Mathf.RoundToInt(scoreFinal).ToString();
+        leaderboard.GetLeaderboard();
         ranking.SetActive(true);
     }
 
@@ -72,4 +88,5 @@ public class GameManager : MonoBehaviour
         submitScoreEvent.Invoke(inputName.text, int.Parse(scoreFinalText.text));
         leaderboard.GetLeaderboard();
     }
+
 }
