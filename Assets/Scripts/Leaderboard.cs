@@ -12,10 +12,19 @@ public class Leaderboard : MonoBehaviour
     [SerializeField]
     private List<Text> scores;
 
-    private string publicLeaderboardKey = "9f6987b71b3925194cf76d64b702e7fe5afcff7c6b38398a5845c271a0ab2865";
+    private string publicLeaderboardKey;
+
+    [SerializeField]
+    private GameManager gm;
+
+    public void Awake()
+    {
+        publicLeaderboardKey = gm.levelScriptable.keyRanking;
+    }
 
     public void GetLeaderboard()
     {
+        publicLeaderboardKey = gm.levelScriptable.keyRanking;
         LeaderboardCreator.GetLeaderboard(publicLeaderboardKey, ((msg) =>{
             int loopLength = (msg.Length < names.Count) ? msg.Length : names.Count;
             for (int i = 0; i < loopLength; i++)
@@ -28,6 +37,7 @@ public class Leaderboard : MonoBehaviour
 
     public void SetLeaderboardEntry(string username, int score)
     {
+        publicLeaderboardKey = gm.levelScriptable.keyRanking;
         LeaderboardCreator.UploadNewEntry(publicLeaderboardKey, username, score, ((msg) =>
         {
             GetLeaderboard();

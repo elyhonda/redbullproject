@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e21e968b49d0e84aba29c96f29c7e95, type: 3}
+  m_Name: Level1
+  m_EditorClassIdentifier: 
+  name: "N\xEDvel 1"
+  sceneName: Nivel1
+  keyRanking: 7bacd0af0be586a21793234e7e672b17b4eaa44c635082afcb670c7d0624f058
+  levelImage: {fileID: 21300000, guid: aa41e455d3c0bc64e90eaa356b79e293, type: 3}

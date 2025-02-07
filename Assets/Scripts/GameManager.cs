@@ -6,7 +6,8 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private int level;
+    [SerializeField] public Level levelScriptable;
+    [SerializeField] public int level;
 
     [Header("Gameplay")]
     [SerializeField] private float timer, timerGoal;
@@ -17,10 +18,10 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private float scoreFinal;
-    [SerializeField] private TMP_Text scoreFinalText, scoreTimerText, scoreCanText;
+    [SerializeField] private TMP_Text scoreFinalText, scoreTimerText, scoreCanText, highscoreText;
     [SerializeField] private GameObject ranking;
+    [SerializeField] private GameObject notifyNewScore;
     [SerializeField] private GameObject gameOver;
-    [SerializeField] private TMP_InputField inputName;
 
     public UnityEvent<string, int> submitScoreEvent;
     public Leaderboard leaderboard;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         redbullCan = 0;
     }
 
@@ -53,22 +55,26 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("perdeu");
+        Time.timeScale = 0;
         gameOver.SetActive(true);
     }
 
     public void Restart()
     {
         SceneManager.LoadScene("Nivel" + level);
+        Time.timeScale = 1;
     }
 
     public void Menu()
     {
         SceneManager.LoadScene("Menu");
+        Time.timeScale = 1;
     }
 
     public void NextLevel()
     {
         SceneManager.LoadScene("Nivel" + (level + 1));
+        Time.timeScale = 1;
     }
 
     public void GameWin()
@@ -79,13 +85,19 @@ public class GameManager : MonoBehaviour
         scoreCanText.text = redbullCan.ToString() + "" + redbullCanGoal.ToString();
         scoreTimerText.text = timer.ToString("F2") + "/" + timerGoal.ToString();
         scoreFinalText.text = Mathf.RoundToInt(scoreFinal).ToString();
-        leaderboard.GetLeaderboard();
+        SubmitScore();
+        if(PlayerPrefs.GetInt("Nivel" + level) == null || PlayerPrefs.GetInt("Nivel" + level) < Mathf.RoundToInt(scoreFinal))
+        {
+            PlayerPrefs.SetInt("Nivel" + level, Mathf.RoundToInt(scoreFinal));
+            notifyNewScore.SetActive(true);
+        }
+        highscoreText.text = PlayerPrefs.GetInt("Nivel" + level).ToString();
         ranking.SetActive(true);
     }
 
     public void SubmitScore()
     {
-        submitScoreEvent.Invoke(inputName.text, int.Parse(scoreFinalText.text));
+        submitScoreEvent.Invoke(PlayerPrefs.GetString("Name"), int.Parse(scoreFinalText.text));
         leaderboard.GetLeaderboard();
     }
 
