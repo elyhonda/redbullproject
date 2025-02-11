@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("ganhou");
         Time.timeScale = 0;
         scoreFinal = (redbullCan * 100) + ((timerGoal - timer) * 1000);
-        scoreCanText.text = redbullCan.ToString() + "" + redbullCanGoal.ToString();
+        scoreCanText.text = redbullCan.ToString() + "/" + redbullCanGoal.ToString();
         scoreTimerText.text = timer.ToString("F2") + "/" + timerGoal.ToString();
         scoreFinalText.text = Mathf.RoundToInt(scoreFinal).ToString();
         SubmitScore();

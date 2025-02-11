@@ -3603,21 +3603,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 105253892}
     m_Modifications:
-    - target: {fileID: 2076914157755048645, guid: a05fccd844628c44a93e0949ff61dc2e, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1147.4692
-      objectReference: {fileID: 0}
-    - target: {fileID: 2076914157755048645, guid: a05fccd844628c44a93e0949ff61dc2e, type: 3}
+    - target: {fileID: 1369600972269664209, guid: a05fccd844628c44a93e0949ff61dc2e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 755.6395
+      value: 49.6635
       objectReference: {fileID: 0}
-    - target: {fileID: 2076914157755048645, guid: a05fccd844628c44a93e0949ff61dc2e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1.2288
-      objectReference: {fileID: 0}
-    - target: {fileID: 2076914157755048645, guid: a05fccd844628c44a93e0949ff61dc2e, type: 3}
+    - target: {fileID: 1369600972269664209, guid: a05fccd844628c44a93e0949ff61dc2e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 11.6886
+      value: -7.403015
       objectReference: {fileID: 0}
     - target: {fileID: 2188716043429801751, guid: a05fccd844628c44a93e0949ff61dc2e, type: 3}
       propertyPath: m_Pivot.x
@@ -3699,30 +3691,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3547522872301496358, guid: a05fccd844628c44a93e0949ff61dc2e, type: 3}
+    - target: {fileID: 7759797460239049525, guid: a05fccd844628c44a93e0949ff61dc2e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 74e324dd9cbd34aa2811e539973caac7, type: 3}
-    - target: {fileID: 6296348213659998259, guid: a05fccd844628c44a93e0949ff61dc2e, type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6296348213659998259, guid: a05fccd844628c44a93e0949ff61dc2e, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6296348213659998259, guid: a05fccd844628c44a93e0949ff61dc2e, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6296348213659998259, guid: a05fccd844628c44a93e0949ff61dc2e, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6296348213659998259, guid: a05fccd844628c44a93e0949ff61dc2e, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.r
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: aa41e455d3c0bc64e90eaa356b79e293, type: 3}
     - target: {fileID: 8804889627816772551, guid: a05fccd844628c44a93e0949ff61dc2e, type: 3}
       propertyPath: m_Name
       value: BotaoNivel
