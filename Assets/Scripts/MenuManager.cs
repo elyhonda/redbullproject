@@ -21,6 +21,11 @@ public class MenuManager : MonoBehaviour
     public Image imageLevel;
     public TMP_Text nameLevel;
     public GameObject rightButton, leftButton;
+
+    [Header("Sons")]
+    public AudioClip clickButton;
+    public AudioClip positiveButton;
+    public AudioSource sfx;
     void Start()
     {
 
@@ -33,6 +38,7 @@ public class MenuManager : MonoBehaviour
     }
     public void LevelToRight()
     {
+        sfx.PlayOneShot(clickButton);
         if (listValue < levels.Count - 1)
         {
             listValue += 1;
@@ -52,6 +58,7 @@ public class MenuManager : MonoBehaviour
     }
     public void LevelToLeft()
     {
+        sfx.PlayOneShot(clickButton);
         if (listValue <= levels.Count && listValue != 0)
         {
             listValue -= 1;
@@ -85,10 +92,12 @@ public class MenuManager : MonoBehaviour
     {
         PlayerPrefs.SetString("Name", nameInput.text);
         nameText.text = PlayerPrefs.GetString("Name");
+        sfx.PlayOneShot(clickButton);
     }
 
     public void ToLevel()
     {
         SceneManager.LoadScene(levels[listValue].sceneName);
+        sfx.PlayOneShot(positiveButton);
     }
 }

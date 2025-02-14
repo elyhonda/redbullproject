@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float timer, timerGoal;
     [SerializeField] private int redbullCanGoal;
     [SerializeField] private TMP_Text timerText, canText;
+    [SerializeField] private GameObject player;
     public static int redbullCan = 0;
     public static bool win = false;
 
@@ -23,24 +24,36 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject notifyNewScore;
     [SerializeField] private GameObject gameOver;
 
+    [Header("Ranking")]
     public UnityEvent<string, int> submitScoreEvent;
     public Leaderboard leaderboard;
 
+    [Header("Sons")]
+    public AudioClip clickButton, clickButton2;
+    public AudioSource sfx;
 
+
+    private bool isStarted = false;
     void Start()
     {
+        isStarted = false;
+        player.GetComponent<PlayerMovement>().enabled = false;
         Time.timeScale = 1;
         redbullCan = 0;
+        timerText.text = timer.ToString("F2") + "/" + timerGoal.ToString("F2");
+        canText.text = redbullCan.ToString() + "/" + redbullCanGoal; ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        timerText.text = timer.ToString("F2") + "/" + timerGoal.ToString("F2");
-        canText.text = redbullCan.ToString() + "/" + redbullCanGoal; ToString();
+        if(isStarted)
+        {
+            timer += Time.deltaTime;
+            timerText.text = timer.ToString("F2") + "/" + timerGoal.ToString("F2");
+            canText.text = redbullCan.ToString() + "/" + redbullCanGoal; ToString();
+        }
 
-        //if(Input.GetButtonDown("r"))
         if (timer > timerGoal)
         {
             GameOver();
@@ -50,6 +63,12 @@ public class GameManager : MonoBehaviour
         {
             GameWin();
         }
+    }
+
+    public void PlayGame()
+    {
+        player.GetComponent<PlayerMovement>().enabled = true;
+        isStarted = true;
     }
 
     public void GameOver()
@@ -63,18 +82,21 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Nivel" + level);
         Time.timeScale = 1;
+        sfx.PlayOneShot(clickButton);
     }
 
     public void Menu()
     {
         SceneManager.LoadScene("Menu");
         Time.timeScale = 1;
+        sfx.PlayOneShot(clickButton);
     }
 
     public void NextLevel()
     {
         SceneManager.LoadScene("Nivel" + (level + 1));
         Time.timeScale = 1;
+        sfx.PlayOneShot(clickButton);
     }
 
     public void GameWin()
