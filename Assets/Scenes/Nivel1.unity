@@ -1790,6 +1790,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_RedBull_Boy
       objectReference: {fileID: 0}
+    - target: {fileID: 6849554912361567587, guid: 188a5c5c7bbc72748a13bdff8ea6041b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7839429354955722287, guid: 188a5c5c7bbc72748a13bdff8ea6041b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.349976
@@ -3357,7 +3361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7808281440831017506, guid: a457a510056237f448b0ea57f461064f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8216548053691462065, guid: a457a510056237f448b0ea57f461064f, type: 3}
       propertyPath: m_IsActive

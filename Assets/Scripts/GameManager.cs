@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     public AudioClip winSFX, winVoice;
     public AudioSource sfx;
 
+    public ResultScreenAnimation resulSA;
+
 
     private bool isStarted = false;
     void Start()
@@ -65,6 +67,16 @@ public class GameManager : MonoBehaviour
         {
             GameWin();
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Restart();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Menu();
+        }
     }
 
     public void PlayGame()
@@ -75,6 +87,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        Cursor.visible = true;
         Debug.Log("perdeu");
         Time.timeScale = 0;
         gameOver.SetActive(true);
@@ -82,6 +95,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
+        Cursor.visible = true;
         SceneManager.LoadScene("Nivel" + level);
         Time.timeScale = 1;
         sfx.PlayOneShot(clickButton);
@@ -89,6 +103,7 @@ public class GameManager : MonoBehaviour
 
     public void Menu()
     {
+        Cursor.visible = true;
         SceneManager.LoadScene("Menu");
         Time.timeScale = 1;
         sfx.PlayOneShot(clickButton);
@@ -96,6 +111,7 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
+        Cursor.visible = true;
         SceneManager.LoadScene("Nivel" + (level + 1));
         Time.timeScale = 1;
         sfx.PlayOneShot(clickButton);
@@ -103,11 +119,13 @@ public class GameManager : MonoBehaviour
 
     public void GameWin()
     {
+        Cursor.visible = true;
         sfx.PlayOneShot(winSFX);
         sfx.PlayOneShot(winVoice);
         Debug.Log("ganhou");
         Time.timeScale = 0;
         scoreFinal = (redbullCan * 100) + ((timerGoal - timer) * 1000);
+        resulSA.pontuacaoFinal = Mathf.RoundToInt(scoreFinal);
         scoreCanText.text = redbullCan.ToString() + "/" + redbullCanGoal.ToString();
         scoreTimerText.text = timer.ToString("F2") + "/" + timerGoal.ToString();
         scoreFinalText.text = Mathf.RoundToInt(scoreFinal).ToString();

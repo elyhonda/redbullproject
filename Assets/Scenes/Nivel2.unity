@@ -2238,7 +2238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1636562609368518507, guid: a457a510056237f448b0ea57f461064f, type: 3}
       propertyPath: timerGoal
-      value: 18
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1636562609368518507, guid: a457a510056237f448b0ea57f461064f, type: 3}
       propertyPath: redbullCanGoal
