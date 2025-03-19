@@ -30,12 +30,14 @@ public class GameManager : MonoBehaviour
 
     [Header("Sons")]
     public AudioClip clickButton, clickButton2;
+    public AudioClip winSFX, winVoice;
     public AudioSource sfx;
 
 
     private bool isStarted = false;
     void Start()
     {
+        Cursor.visible = false;
         isStarted = false;
         player.GetComponent<PlayerMovement>().enabled = false;
         Time.timeScale = 1;
@@ -101,6 +103,8 @@ public class GameManager : MonoBehaviour
 
     public void GameWin()
     {
+        sfx.PlayOneShot(winSFX);
+        sfx.PlayOneShot(winVoice);
         Debug.Log("ganhou");
         Time.timeScale = 0;
         scoreFinal = (redbullCan * 100) + ((timerGoal - timer) * 1000);
