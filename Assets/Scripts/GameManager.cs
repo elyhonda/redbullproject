@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
-
+using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] public Level levelScriptable;
@@ -37,6 +37,13 @@ public class GameManager : MonoBehaviour
     public LoadingScreen loadingScreen;
 
     private bool isStarted = false;
+    private int lastWholeSecond;
+
+    [SerializeField] private TMP_Text feedbackText;
+    [SerializeField] private float feedbackDuration = 0.5f; // Tempo de exibição do feedback
+    private int comboCount = 0;
+    private float comboTimer = 0f;
+    private float comboResetTime = 8f; 
     void Start()
     {
         Cursor.visible = false;
@@ -51,11 +58,18 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isStarted)
+        if (isStarted)
         {
             timer += Time.deltaTime;
             timerText.text = timer.ToString("F2") + "/" + timerGoal.ToString("F2");
-            canText.text = redbullCan.ToString() + "/" + redbullCanGoal; ToString();
+
+            if ((int)timer > lastWholeSecond)
+            {
+                lastWholeSecond = (int)timer;
+                AnimateTimer();
+            }
+
+            canText.text = redbullCan.ToString() + "/" + redbullCanGoal;
         }
 
         if (timer > timerGoal)
@@ -78,7 +92,68 @@ public class GameManager : MonoBehaviour
             Menu();
         }
     }
+    public void CollectRedbull()
+    {
+        redbullCan++;
+        canText.text = redbullCan.ToString() + "/" + redbullCanGoal;
 
+        // Atualiza combo
+        if (Time.time - comboTimer < comboResetTime)
+        {
+            comboCount++;
+        }
+        else
+        {
+            comboCount = 1; // Reseta se passou muito tempo
+        }
+        comboTimer = Time.time; // Atualiza o tempo da última coleta
+
+        string feedbackMessage;
+        Color feedbackColor;
+
+        switch (comboCount)
+        {
+            case 1:
+                feedbackMessage = "Perfect!";
+                feedbackColor = Color.white; // Branco (Neutro)
+                break;
+            case 2:
+                feedbackMessage = "2x Turbo Boost!";
+                feedbackColor = Color.white; // Azul Red Bull
+                break;
+            case 3:
+                feedbackMessage = "3x Max Energy!";
+                feedbackColor = Color.white; // Amarelo Red Bull
+                break;
+            case 4:
+                feedbackMessage = "4x Full Power!";
+                feedbackColor = new Color(1f, 0f, 0f); // Vermelho Red Bull
+                break;
+            default:
+                feedbackMessage = $"{comboCount}x Overdrive!";
+                feedbackColor = new Color(1f, 0f, 0f); // Vermelho intenso para combos altos
+                break;
+        }
+        ShowFeedback(feedbackMessage, feedbackColor);
+    }
+    private void ShowFeedback(string message, Color color)
+    {
+        feedbackText.text = message;
+        feedbackText.color = color;
+        feedbackText.transform.localScale = Vector3.one * 0.5f; // Começa pequeno
+
+        feedbackText.DOFade(1, 0.2f); // Aparece rapidamente
+        feedbackText.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack); // Expande com bounce
+
+        // Depois de um tempo, some suavemente
+        feedbackText.DOFade(0, 0.5f).SetDelay(feedbackDuration);
+    }
+
+    private void AnimateTimer()
+    {
+        // Animação de pulso no timer
+        timerText.transform.DOPunchScale(Vector3.one * 0.2f, 0.2f, 8, 1);
+    }
     public void PlayGame()
     {
         player.GetComponent<PlayerMovement>().enabled = true;

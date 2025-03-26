@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening; 
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -99,7 +100,15 @@ public class PlayerMovement : MonoBehaviour
     private float XAnimFloat; //the float for our wing turning
     private float RunTimer; //animation ctrl for running
     private float FlyingTimer; //the time before the animation stops flying
-
+    
+    [Header("Objects")]
+    public GameObject wings;
+    public GameObject wingsTop;
+    public GameObject trailL, trailR;
+    public GameObject bull;
+    public GameObject bullTrail; // Referência ao Trail Renderer
+    public float boostDuration = 2f; // Tempo do efeito
+    public Vector3 originalScale;
     // Start is called before the first frame update
     void Awake()
     { 
@@ -116,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
         CamFol = Cam.GetComponentInParent<CameraFollow>();
 
         CheckPointPos = transform.position;
-
+        originalScale = bull.transform.localScale;
         //setup this characters stats
         SetupCharacter();
     }
@@ -586,6 +595,24 @@ public class PlayerMovement : MonoBehaviour
         ActSpeed += Amt;
     }
 
+    public void SpeedBoostBull(float Amt)
+    {
+        ActSpeed += Amt;
+       // Ativa o touro com uma animação de escala
+        bull.SetActive(true);
+        bull.transform.localScale = originalScale * 0.5f;
+        bull.transform.DOScale(originalScale, 0.5f).SetEase(Ease.OutBack);
+
+        // Esconde as asas suavemente
+        wings.SetActive(false);
+        wingsTop.SetActive(false);
+        trailL.SetActive(false);
+        trailR.SetActive(false);
+
+        // Inicia a desativação após o tempo do boost
+        StartCoroutine(DisableBullEffect(boostDuration));
+    }
+
     void MoveSelf(float d, float Speed, float Accel, Vector3 moveDirection)
     {
         if (moveDirection == Vector3.zero)
@@ -798,5 +825,23 @@ public class PlayerMovement : MonoBehaviour
 
         //return with our character being in air
         SetInAir();
+    }
+
+    private IEnumerator DisableBullEffect(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        // Desativa o Trail Renderer após um curto delay para evitar corte brusco
+        bull.transform.DOScale(originalScale * 0.5f, 0.3f).SetEase(Ease.InBack).OnComplete(() =>
+        {
+            bull.SetActive(false);
+            bullTrail.SetActive(false); // Desliga o Trail depois do touro sumir
+        });
+
+        // Retorna as asas suavemente
+        wingsTop.SetActive(true);
+        wings.SetActive(true);
+        trailL.SetActive(true);
+        trailR.SetActive(true);
     }
 }

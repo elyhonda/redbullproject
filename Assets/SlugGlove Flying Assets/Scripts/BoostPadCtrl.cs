@@ -7,6 +7,7 @@ public class BoostPadCtrl : MonoBehaviour
     public float Boost;
     public GameObject FX;
     public GameObject redBull;
+    public bool isBull;
     private void OnTriggerEnter(Collider other)
     {
         PlayerCollisionSphere Player = other.GetComponent<PlayerCollisionSphere>();
@@ -14,7 +15,10 @@ public class BoostPadCtrl : MonoBehaviour
         if (!Player)
             return;
 
+        if(!isBull)
         Player.PlayerMov.SpeedBoost(Boost);
+        else
+        Player.PlayerMov.SpeedBoostBull(Boost);
 
         if (FX)
         {
@@ -25,7 +29,11 @@ public class BoostPadCtrl : MonoBehaviour
         if(redBull.active)
         {
             redBull.SetActive(false);
-            GameManager.redbullCan += 1;
+            GameManager gm = FindObjectOfType<GameManager>(); // Encontra o GameManager na cena
+            if (gm != null)
+            {
+                gm.CollectRedbull();
+            }
         }
 
     }

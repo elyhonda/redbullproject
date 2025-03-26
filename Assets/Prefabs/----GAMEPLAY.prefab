@@ -320,6 +320,8 @@ MonoBehaviour:
   sfx: {fileID: 5498305632667758624}
   resulSA: {fileID: 1123299958224266599}
   loadingScreen: {fileID: 5610109404562750767}
+  feedbackText: {fileID: 4215130704040570517}
+  feedbackDuration: 0.5
 --- !u!82 &5498305632667758624
 AudioSource:
   m_ObjectHideFlags: 0
@@ -669,6 +671,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 296744073526021454, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
   m_PrefabInstance: {fileID: 2059883784747722894}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4215130704040570517 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2803783691725669915, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
+  m_PrefabInstance: {fileID: 2059883784747722894}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5480858408998454223 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5807891775304067905, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
