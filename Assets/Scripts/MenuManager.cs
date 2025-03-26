@@ -26,6 +26,8 @@ public class MenuManager : MonoBehaviour
     public AudioClip clickButton;
     public AudioClip positiveButton;
     public AudioSource sfx;
+
+    public LoadingScreen loadingScreen;
     void Start()
     {
         Time.timeScale = 1;
@@ -97,7 +99,13 @@ public class MenuManager : MonoBehaviour
 
     public void ToLevel()
     {
-        SceneManager.LoadScene(levels[listValue].sceneName);
+        LoadingScene(levels[listValue].sceneName);
         sfx.PlayOneShot(positiveButton);
+    }
+
+    public void LoadingScene(string sceneName)
+    {
+        loadingScreen.gameObject.SetActive(true);
+        loadingScreen.sceneName = sceneName;
     }
 }

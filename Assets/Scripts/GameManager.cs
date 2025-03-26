@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     public AudioSource sfx;
 
     public ResultScreenAnimation resulSA;
-
+    public LoadingScreen loadingScreen;
 
     private bool isStarted = false;
     void Start()
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         Cursor.visible = true;
-        SceneManager.LoadScene("Nivel" + level);
+        LoadingScene("Nivel" + level);
         Time.timeScale = 1;
         sfx.PlayOneShot(clickButton);
     }
@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
     public void Menu()
     {
         Cursor.visible = true;
-        SceneManager.LoadScene("Menu");
+        LoadingScene("Menu");
         Time.timeScale = 1;
         sfx.PlayOneShot(clickButton);
     }
@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         Cursor.visible = true;
-        SceneManager.LoadScene("Nivel" + (level + 1));
+        LoadingScene("Nivel" + (level + 1));
         Time.timeScale = 1;
         sfx.PlayOneShot(clickButton);
     }
@@ -145,4 +145,9 @@ public class GameManager : MonoBehaviour
         leaderboard.GetLeaderboard();
     }
 
+    public void LoadingScene(string sceneName)
+    {
+        loadingScreen.gameObject.SetActive(true);
+        loadingScreen.sceneName = sceneName;
+    }
 }
