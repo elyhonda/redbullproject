@@ -3,7 +3,137 @@ guid: 80f470383b60c234daec0861274ae842
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground_rock_1
+    second: {fileID: 2100000, guid: 6a485a4b67ca36f4faec3a95fa309e8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground_rock_10
+    second: {fileID: 2100000, guid: e68d6dbce9e43e44ea8ead874d8033a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground_rock_11
+    second: {fileID: 2100000, guid: f8650c9ed8fafa7419c13f0b38172e78, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground_rock_12
+    second: {fileID: 2100000, guid: 89765548428e3ff4f92b954dc8906b43, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground_rock_13
+    second: {fileID: 2100000, guid: e604fa0b74082a54cace985ed6fcc1cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground_rock_2
+    second: {fileID: 2100000, guid: 0b0a966f5bcb9c6418590879f5750a59, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground_rock_3
+    second: {fileID: 2100000, guid: fc401c7cbf485cf4bbfd0cf451926781, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground_rock_4
+    second: {fileID: 2100000, guid: a24c8d59245449442a389dfe66ab1c39, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground_rock_5
+    second: {fileID: 2100000, guid: 99b7295ed95e3884f8115a53dfdbc499, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground_rock_6
+    second: {fileID: 2100000, guid: 93d5b5115ebc08a4fae7e5f14345a1e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground_rock_7
+    second: {fileID: 2100000, guid: bfc2c41bdee290d40af3a45feb0cabd2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground_rock_8
+    second: {fileID: 2100000, guid: 424e23726fadad040ab19c1ef7dc63b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground_rock_9
+    second: {fileID: 2100000, guid: a2432870b58af3a4787dbe3a9d1974cc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock_1
+    second: {fileID: 2100000, guid: 97d2ce290d85c054c99538266c7eaec6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock_10
+    second: {fileID: 2100000, guid: 64140013e8f66c04fb4c06a43af8398b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock_11
+    second: {fileID: 2100000, guid: 2af6d197b12c2164e8cad397146faf55, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock_12
+    second: {fileID: 2100000, guid: 7197d41bdeede214491a5443d810c598, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock_13
+    second: {fileID: 2100000, guid: a6cbb63bcea9a8f4db883f2058d20da8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock_2
+    second: {fileID: 2100000, guid: 4b0a13a942acf0840af3eb67069b5ab0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock_3
+    second: {fileID: 2100000, guid: bdff44155db2d62408a62ad3d35a0a0a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock_4
+    second: {fileID: 2100000, guid: ed666fcc592396d40a2ebdadf358dc89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock_5
+    second: {fileID: 2100000, guid: 7e1d50b606445aa40992c291efdf705e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock_6
+    second: {fileID: 2100000, guid: 13dd93659dfb20f4f9aa713db783c5cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock_7
+    second: {fileID: 2100000, guid: 10dd2da3935a9e94b95f7b06d8d794e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock_8
+    second: {fileID: 2100000, guid: 0b2ee4860ec704d42991d73c928545da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock_9
+    second: {fileID: 2100000, guid: f1cda71eff6847847a664a3cd287e56b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

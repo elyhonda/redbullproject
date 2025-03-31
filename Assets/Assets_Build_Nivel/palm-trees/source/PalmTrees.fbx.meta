@@ -3,7 +3,42 @@ guid: 9a9f8c29a21abf34b99fc0364aa16c9a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bark_1
+    second: {fileID: 2100000, guid: cffa896c25885fc46b154a81e5435638, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bark_2
+    second: {fileID: 2100000, guid: 388b80ffd6a8a8543b9ea198dbda8eb6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bark_3
+    second: {fileID: 2100000, guid: 488e5ded7595fcb458052860774faaa7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bark_4
+    second: {fileID: 2100000, guid: cffa896c25885fc46b154a81e5435638, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leaf_1
+    second: {fileID: 2100000, guid: 4f09031bae9cd044a9c48f61bb9026da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leaf_2
+    second: {fileID: 2100000, guid: 4f09031bae9cd044a9c48f61bb9026da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leaf_3
+    second: {fileID: 2100000, guid: 9bec32a9014b1ea418605ff1d4e49516, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
