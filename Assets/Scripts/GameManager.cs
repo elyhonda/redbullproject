@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject ranking;
     [SerializeField] private GameObject notifyNewScore;
     [SerializeField] private GameObject gameOver;
+    [SerializeField] private Slider comboSlider;
+    [SerializeField] private RectTransform comboSliderRect;
 
     [Header("Ranking")]
     public UnityEvent<string, int> submitScoreEvent;
@@ -44,6 +46,7 @@ public class GameManager : MonoBehaviour
     private int comboCount = 0;
     private float comboTimer = 0f;
     private float comboResetTime = 8f; 
+    private bool isComboActive = false;
     void Start()
     {
         Cursor.visible = false;
@@ -53,6 +56,10 @@ public class GameManager : MonoBehaviour
         redbullCan = 0;
         timerText.text = timer.ToString("F2") + "/" + timerGoal.ToString("F2");
         canText.text = redbullCan.ToString() + "/" + redbullCanGoal; ToString();
+
+        comboSlider.maxValue = comboResetTime;
+        comboSlider.value = 0;
+        comboSliderRect.localScale = Vector3.zero;
     }
 
     // Update is called once per frame
@@ -90,6 +97,19 @@ public class GameManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Menu();
+        }
+        
+        if (isComboActive)
+        {
+            float timeLeft = comboResetTime - (Time.time - comboTimer);
+            comboSlider.value = Mathf.Clamp(timeLeft, 0, comboResetTime);
+
+            if (timeLeft <= 0)
+            {
+                comboSliderRect.DOScale(0, 0.3f).SetEase(Ease.InBack);
+                comboCount = 0; // Reseta o combo
+                isComboActive = false;
+            }
         }
     }
     public void CollectRedbull()
@@ -135,6 +155,13 @@ public class GameManager : MonoBehaviour
                 break;
         }
         ShowFeedback(feedbackMessage, feedbackColor);
+        
+        if (!isComboActive)
+        {
+            comboSliderRect.DOScale(1, 0.3f).SetEase(Ease.OutBack); // Animação de escala
+            isComboActive = true;
+        }
+        comboSlider.value = comboResetTime; 
     }
     private void ShowFeedback(string message, Color color)
     {
@@ -144,9 +171,6 @@ public class GameManager : MonoBehaviour
 
         feedbackText.DOFade(1, 0.2f); // Aparece rapidamente
         feedbackText.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack); // Expande com bounce
-
-        // Depois de um tempo, some suavemente
-        feedbackText.DOFade(0, 0.5f).SetDelay(feedbackDuration);
     }
 
     private void AnimateTimer()

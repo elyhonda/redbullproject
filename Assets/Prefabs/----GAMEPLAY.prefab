@@ -297,6 +297,8 @@ MonoBehaviour:
   ranking: {fileID: 8216548053691462065}
   notifyNewScore: {fileID: 6788102118404599425}
   gameOver: {fileID: 7995634988518138489}
+  comboSlider: {fileID: 5427310977732455928}
+  comboSliderRect: {fileID: 81868034023890760}
   submitScoreEvent:
     m_PersistentCalls:
       m_Calls:
@@ -617,6 +619,26 @@ PrefabInstance:
       propertyPath: m_PlaneDistance
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 5350228022670754995, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5350228022670754995, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5350228022670754995, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5350228022670754995, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 259.425
+      objectReference: {fileID: 0}
+    - target: {fileID: 5350228022670754995, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -75.21151
+      objectReference: {fileID: 0}
     - target: {fileID: 5745977616565115201, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -649,6 +671,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 6325169299323833178, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6325169299323833178, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6325169299437356407, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6325169299437356407, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6325169299437356407, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6325169299437356407, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7001583540679692874, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
       propertyPath: gm
       value: 
@@ -666,6 +712,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
+--- !u!224 &81868034023890760 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2140608300760020934, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
+  m_PrefabInstance: {fileID: 2059883784747722894}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1767682966399559104 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 296744073526021454, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
@@ -680,6 +731,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5427310977732455928 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6325169299437356406, guid: c0c08ed7ba1033d478bc54a0bdf90e9f, type: 3}
+  m_PrefabInstance: {fileID: 2059883784747722894}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5480858408998454223 stripped
