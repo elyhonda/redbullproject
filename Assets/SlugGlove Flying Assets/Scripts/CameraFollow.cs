@@ -59,6 +59,10 @@ public class CameraFollow : MonoBehaviour
     public float MaxVelocity;
     private float FovLerp;
 
+    [Header("Camera Follow Lag")]
+    public float PositionFollowSpeed = 5f; // quanto maior, mais rápido ela alcança o personagem
+    private Vector3 velocity = Vector3.zero; // usado para suavização
+
     //setup objects
     void Awake()
     {
@@ -89,6 +93,7 @@ public class CameraFollow : MonoBehaviour
 
     public void Tick(float d)
     {
+        /*
         float h = Input.GetAxis("Mouse X");
         float v = Input.GetAxis("Mouse Y");
 
@@ -98,8 +103,15 @@ public class CameraFollow : MonoBehaviour
             if(AutoXInput < TimeBeforeAutoXInput)
                 AutoXInput = TimeBeforeAutoXInput;
         }
-
+        
         HandleRotation(d, v, h, MouseSpeed);
+        */
+        // Direção que a câmera deve olhar
+        Vector3 desiredForward = Vector3.Lerp(transform.forward, target.forward, delta * FollowRotSpeed);
+        Quaternion targetRot = Quaternion.LookRotation(desiredForward, target.up);
+
+        // Suaviza a rotação da câmera até esse novo alvo
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, delta * FollowRotSpeed);
         handlePivotPosition();
 
         //look at player
@@ -133,6 +145,12 @@ public class CameraFollow : MonoBehaviour
         }
         else
             AutoXInput -= d;
+
+        // Posição desejada atrás do personagem
+        Vector3 targetPos = target.position - (transform.forward * DistanceFromPlayer);
+
+        // Suaviza a movimentação até lá
+        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, 1f / PositionFollowSpeed);
     }
 
     public void HandleFov(float d, float Velocity)

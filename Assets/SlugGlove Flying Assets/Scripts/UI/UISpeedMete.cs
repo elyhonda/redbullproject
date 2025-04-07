@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UISpeedMete : MonoBehaviour
 {
     private PlayerMovement Player;
-    public Text Txt;
+    public TMP_Text Txt;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,6 @@ public class UISpeedMete : MonoBehaviour
             return;
 
         float Amt = Mathf.Round((Player.Rigid.linearVelocity.magnitude * 0.5f) * Player.ActSpeed);
-        Txt.text = Amt.ToString();
+        Txt.text = Amt.ToString() + " m/s";
     }
 }
