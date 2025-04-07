@@ -62,7 +62,7 @@ public class CameraFollow : MonoBehaviour
     [Header("Camera Follow Lag")]
     public float PositionFollowSpeed = 5f; // quanto maior, mais rápido ela alcança o personagem
     private Vector3 velocity = Vector3.zero; // usado para suavização
-
+    private bool isFollowing = true;
     //setup objects
     void Awake()
     {
@@ -93,6 +93,8 @@ public class CameraFollow : MonoBehaviour
 
     public void Tick(float d)
     {
+        if (!isFollowing || target == null)
+        return;
         /*
         float h = Input.GetAxis("Mouse X");
         float v = Input.GetAxis("Mouse Y");
@@ -213,5 +215,10 @@ public class CameraFollow : MonoBehaviour
         {
             States = WorldState.Dead;
         }
+    }
+
+    public void StopFollowing()
+    {
+        isFollowing = false;
     }
 }
